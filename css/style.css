@@ -1,0 +1,65 @@
+body, html {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	height: 100%;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.topbar {
+	opacity: .5;
+}
+
+.h-centered {
+	width: 100%;
+	text-align: center;
+}
+
+.v-centered {
+	position: absolute;
+	top: 30%;
+}
+
+.main-title {
+	padding-top: 20px;
+	font-weight: bold;
+	font-size: 72px;
+}
+
+.project-container {
+	background-color: white;
+	padding: 0;
+	box-shadow: 2px 2px 5px grey;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	border-radius: 5px;
+	overflow:hidden;
+}
+
+.project-img {
+	height: 315px;
+	width: 50%;
+	float: left;
+	padding-right: 15px;
+}
+
+.project-body {
+	padding: 15px;
+}
+
+.title-container {
+	position: relative;
+	margin-top: 10%;
+}
+
+.title-img {
+	height: 315px;
+	width: 315px;
+	float: left;
+	padding-right: 15px;
+}
