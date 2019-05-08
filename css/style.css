@@ -49,7 +49,31 @@ body {
 	height: 315px;
 	width: 50%;
 	float: left;
-	padding-right: 15px;
+	/*padding-right: 15px;*/
+	margin-right: 15px;
+	position: relative;
+}
+
+.click-to-see {
+	height: 315px;
+	width: 50%;
+	float: left;
+	position: absolute;
+	opacity: 0;
+	background-color: #000;
+	background-image: url("/assets/images/demo.png");
+	background-position: center;
+	background-size: contain;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+.click-to-see:hover {
+	opacity: .7;
+	cursor:pointer;
 }
 
 .project-body {
@@ -67,3 +91,5 @@ body {
 	float: left;
 	padding-right: 15px;
 }
+
+
