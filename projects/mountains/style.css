@@ -1,18 +1,9 @@
-.canvas-section {
-	float: left;
-	padding: 0px 20px;
-}
 
 #glCanvas {
 	width: 100%;
 	border: solid 5px white;
 }
 
-.settings-section {
-	float:left;
-	padding: 0px 20px;
-	height: 100%;
-}
 
 .settings-checkbox {
 	cursor:pointer;
