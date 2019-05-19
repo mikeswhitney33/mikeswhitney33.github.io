@@ -108,6 +108,9 @@ window.onload = function(event) {
 
 			if(mouseX >  xboundlow && mouseX < xboundhigh &&
 					mouseY >  yboundlow && mouseY < yboundhigh) {
+				if(board[i] != 0) {
+					continue;
+				}
 				board[i] = currentPlayer.me;
 				findWinner(canvas, context, board);
 				if(winner > -1) {
