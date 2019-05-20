@@ -40,8 +40,8 @@ function main() {
 	});
 
 	reset_btn.addEventListener("click", reset);
-	player1_select.addEventListener("change", reset);
-	player2_select.addEventListener("change", reset);
+	player1_select.addEventListener("change", update_game);
+	player2_select.addEventListener("change", update_game);
 
 	game_select.addEventListener("change", function(event) {
 		update_game();
