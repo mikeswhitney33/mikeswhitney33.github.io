@@ -26,10 +26,6 @@ function main() {
 		game = new games[game_select.value].game_class(canvas, context, playerClasses[player1_select.value],playerClasses[player2_select.value]);
 	}
 
-	function reset() {
-		game.reset( playerClasses[player1_select.value], playerClasses[player2_select.value]);
-	}
-
 	canvas.addEventListener("click", function(event) {
 		const rect = canvas.getBoundingClientRect();
 		const width = rect.width;
@@ -39,13 +35,11 @@ function main() {
 		game.onclick(mouseX, mouseY, width, height);
 	});
 
-	reset_btn.addEventListener("click", reset);
+	reset_btn.addEventListener("click", update_game);
 	player1_select.addEventListener("change", update_game);
 	player2_select.addEventListener("change", update_game);
 
-	game_select.addEventListener("change", function(event) {
-		update_game();
-	});
+	game_select.addEventListener("change", update_game);
 
 	update_game();
 }
