@@ -62,11 +62,18 @@ function inBounds(i, j) {
 
 function pawnMoves(board, i, j, sign) {
 	const moves = [];
-	if(((sign == -1 && j == 1) || (sign == 1 && j == 6)) && sign != Math.sign(board[index(j - 2*sign, i)])) {
+	const them = sign == 1 ? -1 : 1;
+	if(((sign == -1 && j == 1) || (sign == 1 && j == 6)) && 0 == Math.sign(board[index(j - 2*sign, i)])) {
 		moves.push({i:i, j:j-2*sign});
 	}
-	if(sign != Math.sign(board[index(j - sign, i)])) {
+	if(0 == Math.sign(board[index(j - sign, i)])) {
 		moves.push({i:i, j:j-sign});
+	}
+	if(them == Math.sign(board[index(j - sign, i - sign)])) {
+		moves.push({i:i-sign, j:j-sign});
+	}
+	if(them == Math.sign(board[index(j - sign, i + sign)])) {
+		moves.push({i:i+sign, j:j-sign});
 	}
 	return moves;
 }
@@ -74,93 +81,80 @@ function pawnMoves(board, i, j, sign) {
 function rookMoves(board, i, j, sign) {
 	const moves = [];
 	var x = i, y = j;
-	do {
-		x++;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	do {
-		x--;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	do {
-		y++;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	do {
-		y--;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	return moves;
-}
-
-function knightMoves(board, i, j, sign) {
-	const possible = [
-		{i:i + 2, j:j + 1},
-		{i:i + 2, j:j - 1},
-		{i:i - 2, j:j + 1},
-		{i:i - 2, j:j - 1},
-
-		{i:i + 1, j:j + 2},
-		{i:i + 1, j:j - 2},
-		{i:i - 1, j:j + 2},
-		{i:i - 1, j:j - 2},
-	];
-	const moves = [];
-	for(var k = 0;k < possible.length;k++) {
-		if(inBounds(possible[k].i, possible[k].j) && Math.sign(board[index(possible[k].j, possible[k].i)]) != sign) {
-			moves.push(possible[k]);
-		}
+	const px = [1, -1, 0, 0];
+	const py = [0, 0, 1, -1];
+	for(var k = 0;k < 4;k++) {
+		x = i, y = j;
+		do {
+			x += px[k], y += py[k];
+			if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
+				moves.push({i:x, j:y});
+			}
+		} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
 	}
 	return moves;
 }
 
+function checkMoves(board, i, j, sign, px, py, moves) {
+	var x, y;
+	for(var k = 0;k < px.length;k++) {
+		x = i, y = j;
+		do {
+			x += px[k], y += py[k];
+			if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
+				moves.push({i:x, j:y});
+			}
+		} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
+	}
+}
+
+function knightMoves(board, i, j, sign) {
+	const px = [2, 2, -2, -2, 1, 1, -1, -1];
+	const py = [1, -1, 1, -1, 2, -2, 2, -2];
+	// const possible = [
+	// 	{i:i + 2, j:j + 1},
+	// 	{i:i + 2, j:j - 1},
+	// 	{i:i - 2, j:j + 1},
+	// 	{i:i - 2, j:j - 1},
+
+	// 	{i:i + 1, j:j + 2},
+	// 	{i:i + 1, j:j - 2},
+	// 	{i:i - 1, j:j + 2},
+	// 	{i:i - 1, j:j - 2},
+	// ];
+	const moves = [];
+	// checkMoves(board, i, j, sign, px, py, moves);
+	var x, y;
+	for(var k = 0;k < px.length;k++) {
+		x = i, y = j;
+		x += px[k], y += py[k];
+		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
+			moves.push({i:x, j:y});
+		}
+	}
+	// var x = i, y = j;
+	// for(var k = 0;k < possible.length;k++) {
+	// 	if(inBounds(possible[k].i, possible[k].j) && Math.sign(board[index(possible[k].j, possible[k].i)]) != sign) {
+	// 		moves.push(possible[k]);
+	// 	}
+	// }
+	return moves;
+}
+
 function bishopMoves(board, i, j, sign) {
-		const moves = [];
+	const moves = [];
+	const px = [1, -1, 1, -1];
+	const py = [1, -1, -1, 1];
 	var x = i, y = j;
-	do {
-		x++;
-		y++;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	do {
-		x--;
-		y--;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	do {
-		y++;
-		x--;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
-	do {
-		y--;
-		x++;
-		if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
-			moves.push({i:x, j:y});
-		}
-	} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
-	x = i, y = j;
+	for(var k = 0;k < 4;k++) {
+		x = i, y = j;
+		do {
+			x += px[k], y += py[k];
+			if(inBounds(x, y) && Math.sign(board[index(y, x)]) != sign) {
+				moves.push({i:x, j:y});
+			}
+		} while(inBounds(x, y) && Math.sign(board[index(y, x)]) == 0);
+	}
 	return moves;
 }
 

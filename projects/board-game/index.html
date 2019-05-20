@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Board Games</title>
+
+		<!-- Boot strap Dependencies -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/projects/board-game/board-game.css">
+	</head>
+	<body style="background-image:url('/assets/images/bridge.jpg');">
+		<div id="topbar"></div>
+		<div class="container">
+			<div class="row">
+				<div class="mycol col-xs-12 col-sm-12 col-md-12 col-lg-6">
+					<div class="wrap">
+						<canvas id="board" width=512 height=512></canvas>
+					</div>
+				</div>
+				<div class="mycol col-xs-12 col-sm-12 col-md-12 col-lg-6">
+					<div class="wrap bg-white">
+						<div class="settings">
+							<label for="game-select">Select a game: </label>
+							<select id="game-select" name="game-select">
+							</select>
+							<br>
+							<div class="player-select">
+								<label for="player1-select">Player 1: </label>
+								<select id="player1-select" name="player1-select">
+									<option value="human">Human</option>
+									<option value="randomai">RandomAI</option>
+								</select>
+							</div>
+							<div class="player-select">
+								<label for="player2-select">Player 2: </label>
+								<select id="player2-select" name="player2-select">
+									<option value="human">Human</option>
+									<option value="randomai">RandomAI</option>
+								</select>
+							</div>
+							<br><button class="btn btn-primary" id="reset-btn">Reset</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/js/script.js"></script>
+	<script src="/projects/board-game/game.js"></script>
+	<script src="/projects/board-game/tictactoe.js"></script>
+	<script src="/projects/board-game/othello.js"></script>
+	<script src="/projects/board-game/board-game.js"></script>
+</html>
