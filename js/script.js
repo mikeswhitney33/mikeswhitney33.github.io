@@ -1,3 +1,3 @@
 $(document).ready(function() {
-	$("#topbar").load("/pages/shared/navbar.html");
+	$("#topbar").load("/shared/navbar.html");
 });
