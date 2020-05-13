@@ -11,8 +11,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/projects/board-game/board-game.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/board-game.css">
 	</head>
 	<body style="background-image:url('/assets/images/bridge.jpg');">
 		<div id="topbar"></div>
@@ -33,15 +33,11 @@
 							<div class="player-select">
 								<label for="player1-select">Player 1: </label>
 								<select id="player1-select" name="player1-select">
-									<option value="human">Human</option>
-									<option value="randomai">RandomAI</option>
 								</select>
 							</div>
 							<div class="player-select">
 								<label for="player2-select">Player 2: </label>
 								<select id="player2-select" name="player2-select">
-									<option value="human">Human</option>
-									<option value="randomai">RandomAI</option>
 								</select>
 							</div>
 							<br><button class="btn btn-primary" id="reset-btn">Reset</button>
@@ -51,9 +47,10 @@
 			</div>
 		</div>
 	</body>
-	<script src="/js/script.js"></script>
-	<script src="/projects/board-game/game.js"></script>
-	<script src="/projects/board-game/tictactoe.js"></script>
-	<script src="/projects/board-game/othello.js"></script>
-	<script src="/projects/board-game/board-game.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/board-game/game.js"></script>
+    <script src="/js/board-game/tictactoe.js"></script>
+    <script src="/js/board-game/othello.js"></script>
+    <script src="/js/board-game/player.js"></script>
+    <script src="/js/board-game/main.js"></script>
 </html>
