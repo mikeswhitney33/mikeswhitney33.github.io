@@ -13,6 +13,17 @@ class Othello extends Game
         this.winningScore = 0;
         this.complete = false;
         this.availableMoves = [27, 28, 35, 36]
+        this.scoreCard =
+        [
+            100, -50, 30, 10, 10, 30, -50, 100,
+            -50, -100, -10, -10, -10, -100, -50,
+            30, -10, 10, 10, 10, 10, -10, 30,
+            10, -10, 10, 10, 10, 10, -10, 10,
+            10, -10, 10, 10, 10, 10, -10, 10,
+            30, -10, 10, 10, 10, 10, -10, 30,
+            -50, -100, -10, -10, -10, -100, -50,
+            100, -50, 30, 10, 10, 30, -50, 100
+        ]
     }
 
     /**
@@ -176,7 +187,14 @@ class Othello extends Game
      */
     copy()
     {
-
+        var game = new Othello(this.canvas, this.context);
+        game.grid = this.grid.slice();
+        game.turn = this.turn;
+        game.winner = this.winner;
+        game.winningScore = this.winningScore;
+        game.complete = this.complete;
+        game.availableMoves = this.availableMoves;
+        return game;
     }
 
     canMove(player, move)
@@ -210,27 +228,58 @@ class Othello extends Game
 
     checkDir(player, i, j, si, sj)
     {
-        var idx = i * 8 + j;
-        if(this.grid[idx] == 0 || this.grid[idx] == player)
+        if(i < 0 || i >= 8 || j < 0 || j >= 8)
         {
             return false;
         }
-        i+= si;
-        j+= sj;
+        var idx = i * 8 + j;
+        if(this.grid[idx] == 0)
+        {
+            return false;
+        }
+        if(this.grid[idx] == player)
+        {
+            return false;
+        }
         while(true)
         {
+            var idx = i * 8 + j;
             if(i < 0 || i >= 8 || j < 0 || j >= 8)
             {
                 return false;
             }
-            idx = i * 8 + j;
+            if(this.grid[idx] == 0)
+            {
+                return false;
+            }
             if(this.grid[idx] == player)
             {
                 return true;
             }
-            i += si;
-            j += sj;
+            i+=si;
+            j+=sj;
         }
+        // var idx = i * 8 + j;
+        // if(this.grid[idx] == 0 || this.grid[idx] == player)
+        // {
+        //     return false;
+        // }
+        // i+= si;
+        // j+= sj;
+        // while(true)
+        // {
+        //     if(i < 0 || i >= 8 || j < 0 || j >= 8)
+        //     {
+        //         return false;
+        //     }
+        //     idx = i * 8 + j;
+        //     if(this.grid[idx] == player)
+        //     {
+        //         return true;
+        //     }
+        //     i += si;
+        //     j += sj;
+        // }
     }
 
     markDir(player, i, j, si, sj)
@@ -300,7 +349,7 @@ class Othello extends Game
         {
             if(this.grid[i] == player)
             {
-                score++;
+                score += this.scoreCard[i];
             }
         }
         return score;

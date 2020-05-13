@@ -105,6 +105,10 @@ class TicTacToe extends Game
 
     hasMovesLeft(_player)
     {
+        if(this.winner != 0)
+        {
+            return false;
+        }
         for(var i = 0;i < this.grid.length;i++)
         {
             if(this.grid[i] == 0)
@@ -171,14 +175,26 @@ class TicTacToe extends Game
 
     getScore(player)
     {
-        var score = 0;
-        for(var i = 0;i < this.grid.length;i++)
+        if(this.winner == 0)
         {
-            if(this.grid[i] == player)
-            {
-                score++;
-            }
+            return 0;
         }
-        return score;
+        else if(this.winner == player)
+        {
+            return 10;
+        }
+        else
+        {
+            return -10;
+        }
+        // var score = 0;
+        // for(var i = 0;i < this.grid.length;i++)
+        // {
+        //     if(this.grid[i] == player)
+        //     {
+        //         score++;
+        //     }
+        // }
+        // return score;
     }
 }

@@ -45,6 +45,10 @@ function main()
         "randomai":{
             "name":"Random AI",
             "player":RandomAI
+        },
+        "minimax":{
+            "name":"Minimax",
+            "player":Minimax
         }
     }
     setOptions(gameSelect, gameOptions);

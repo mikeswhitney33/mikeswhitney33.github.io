@@ -18,7 +18,7 @@ class Player
 
     prepGame(game)
     {
-        newGame = game.copy();
+        var newGame = game.copy();
         newGame.draw = function(){};
         return newGame;
     }
