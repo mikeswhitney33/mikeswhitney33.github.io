@@ -1,0 +1,46 @@
+{
+    "name": "Mike Whitney",
+    "title": "Software Engineer",
+    "email": "mikeswhitney33@gmail.com",
+    "phone": "8013629114",
+    "summary": "[Brief summary of your background, skills, and experience]",
+    "experience": [
+        {
+            "jobTitle": "Senior Software Engineer",
+            "company": "Techcyte, Inc",
+            "duration": "2024-Present",
+            "responsibilities": [
+                "[Job responsibility or achievement]",
+                "..."
+            ]
+        },
+        {
+            "jobTitle": "Data Engineer",
+            "company": "BENlabs",
+            "duration": "2022-2024",
+            "responsibilities": [
+                "[Job responsibility or achievement]",
+                "..."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Masters",
+            "field": "Computer Science",
+            "institution": "Brigham Young University",
+            "year": "2021"
+        },
+        {
+            "degree": "[Degree]",
+            "field": "[Field of Study]",
+            "institution": "[University/College Name]",
+            "year": "[Graduation Year]"
+        }
+    ],
+    "skills": [
+        "[Skill 1]",
+        "[Skill 2]",
+        "..."
+    ]
+}
