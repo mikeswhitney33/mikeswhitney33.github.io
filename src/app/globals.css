@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+      --color-powder-blue: #b0e0e6;
+      --color-light-blue: #87ceeb;
+      --color-royal-blue: #4169e1;
+      --color-navy-blue: #000080;
+      --color-midnight-blue: #191970;
+    }
+  }
