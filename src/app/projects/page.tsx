@@ -13,17 +13,10 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
-        title: 'Project Title 1',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum lorem vel enim faucibus, non tincidunt nunc lobortis.',
-        imageUrl: '/project1.jpg',
-        link: 'https://example.com/project1',
-    },
-    {
-        id: 2,
-        title: 'Project Title 2',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.',
-        imageUrl: '/project2.jpg',
-        link: 'https://example.com/project2',
+        title: 'Board Game Arena',
+        description: '"Board Game Arena" is a comprehensive Python project that combines the joy of classic board games with the thrill of playing against intelligent computer opponents. This project offers a collection of meticulously crafted implementations of popular board games such as Tic-Tac-Toe, Connect Four, and Reversi (also known as Othello).',
+        imageUrl: '/images/reversi.png',
+        link: 'https://github.com/mikeswhitney33/board-game-arena',
     },
     // Add more projects here
 ];
